@@ -18,13 +18,16 @@ export default function Home() {
     "Lonely",
   ];
   return (
-    <div className="grid grid-rows-[40px_20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-5 sm:p-20 font-josefin">
+    <div className="grid grid-rows-[40px_20px_1fr] items-start justify-items-center min-h-screen p-8 pb-20 gap-5 sm:p-20 font-josefin">
       <Navigation />
       {userMood.mood === "" && (
         <>
           <h2 className="py-1">How are you feeling?</h2>
 
-          <div className="grid grid-cols-2 gap-y-[5rem] gap-x-[7rem] mb-10">
+          <div
+            className="grid grid-cols-2 gap-y-[5rem] gap-x-[7rem] mt-10  w-full
+        max-w-xs"
+          >
             {moods.map((mood) => (
               <button
                 onClick={() => setUserMood({ ...userMood, mood: mood })}
