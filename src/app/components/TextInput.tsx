@@ -7,7 +7,7 @@ function TextInput({ onChange }: TextInputProps) {
     <input
       onChange={onChange}
       type="text"
-      className="border bg-[#ffffff] rounded-sm w-full py-2"
+      className="border bg-[#ffffff] pl-2 max-w-xs rounded-sm w-full py-2"
     />
   );
 }
