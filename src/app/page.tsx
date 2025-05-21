@@ -22,7 +22,7 @@ export default function Home() {
       <Navigation />
       {userMood.mood !== "" && (
         <>
-          <div className="grid lg:grid-cols-[400px_1fr] min-h-full">
+          <div className="grid lg:grid-cols-[400px_1fr] w-full min-h-full">
             <div className="lg:border-r flex flex-col justify-between items-center h-full w-full  lg:px-4 py-6">
               <div className="w-full flex flex-col items-center gap-4">
                 <h2 className="text-center lg:text-[28px]">
@@ -45,7 +45,7 @@ export default function Home() {
         </>
       )}
       {userMood.mood === "" && (
-        <div className="lg:grid lg:grid-cols-[400px_1fr] lg:min-h-full">
+        <div className="lg:grid lg:grid-cols-[400px_1fr] w-full lg:min-h-full">
           <div className="lg:border-r lg:flex lg:flex-col lg:items-center h-full">
             <h2 className="py-1 lg:text-[28px] mt-5 text-center">
               How are you feeling?
