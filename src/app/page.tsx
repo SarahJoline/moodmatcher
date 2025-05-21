@@ -17,6 +17,18 @@ export default function Home() {
     "Calm",
     "Lonely",
   ];
+
+  async function fetchWeatherByCity(city: string) {
+    const res = await fetch("/api/weather", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+
+    const data = await res.json();
+    return data.weather;
+  }
+
   return (
     <div className="grid grid-rows-[auto_1fr] lg:pb-0 lg:justify-items-start items-start justify-items-center min-h-screen p-8 font-josefin">
       <Navigation />
