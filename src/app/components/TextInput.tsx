@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
+import { CityResult } from "../types";
 
 // type TextInputProps = {
 //   onChange?: () => void;
 // };
-
-interface CityResult {
-  display_name: string;
-  name: String;
-  lat: string;
-  lon: string;
-}
 
 function TextInput() {
   const [query, setQuery] = useState("");
@@ -51,17 +45,6 @@ function TextInput() {
       controller.abort();
     };
   }, [query]);
-
-  async function fetchWeatherByCity(city: CityResult) {
-    const res = await fetch("/api/weather", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lat: city.lat, log: city.lon }),
-    });
-
-    const data = await res.json();
-    return data.weather;
-  }
 
   return (
     <>
