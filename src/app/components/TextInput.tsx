@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 interface CityResult {
   display_name: string;
+  name: String;
   lat: string;
   lon: string;
 }
@@ -13,6 +14,7 @@ interface CityResult {
 function TextInput() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<CityResult[]>([]);
+  const [selectedCity, setSelectedCity] = useState<CityResult | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -50,6 +52,17 @@ function TextInput() {
     };
   }, [query]);
 
+  async function fetchWeatherByCity(city: CityResult) {
+    const res = await fetch("/api/weather", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lat: city.lat, log: city.lon }),
+    });
+
+    const data = await res.json();
+    return data.weather;
+  }
+
   return (
     <>
       <input
@@ -66,6 +79,14 @@ function TextInput() {
             <li
               key={idx}
               className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+              onClick={() =>
+                setSelectedCity({
+                  display_name: city.display_name,
+                  name: city.name,
+                  lat: parseFloat(city.lat).toFixed(2),
+                  lon: parseFloat(city.lon).toFixed(2),
+                })
+              }
             >
               {city.display_name}
             </li>
