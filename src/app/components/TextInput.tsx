@@ -30,13 +30,11 @@ function TextInput() {
           {
             signal: controller.signal,
             headers: {
-              "User-Agent": "MoodMatcher/1.0", // Nominatim requires this
+              "User-Agent": "MoodMatcher/1.0",
             },
           }
         );
-        console.log({ res });
         const data = await res.json();
-        console.log(data);
         setResults(data);
       } catch (err) {
         if ((err as any).name !== "AbortError") {
@@ -51,8 +49,7 @@ function TextInput() {
       controller.abort();
     };
   }, [query]);
-  console.log(query);
-  console.log(results);
+
   return (
     <>
       <input
